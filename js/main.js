@@ -251,7 +251,7 @@ var SP = SP || {};
                 error: "ui-input_error"
             },
             _ = {
-                phone: "+7 (999) 999-99-99",
+                phone: "+3 (999) 999-99-99",
                 birthDate: "99.99.9999"
             },
             x = "hidden",
@@ -416,53 +416,6 @@ var SP = SP || {};
                 }), P.showSuccess()
             },
             onkeyup: !1
-        }), b.autocomplete({
-            minLength: 0,
-            source: function(e, t) {
-                var o = i.utils.getServiceURL("regions"),
-                    n = {
-                        feature: "isRegion"
-                    };
-                $.extend(n, e.term ? {
-                    query: e.term
-                } : {}), $.getJSON(o, n).done(function(e) {
-                    var i;
-                    e.payload.length && (i = e.payload.map(function(e) {
-                        return z[e.name] = e.id, {
-                            value: e.name
-                        }
-                    })), t(i)
-                })
-            },
-            select: function(e, t) {
-                if (N = z[t.item.value], w.val(N), b.parents(".ui-input").addClass(y.changed), N) {
-                    var o = i.utils.getServiceURL("addresses"),
-                        n = {
-                            region: N,
-                            get_by: "parent"
-                        };
-                    if ($.getJSON(o, n).done(function(e) {
-                            e.payload.regions[0].areas.length && (q = e.payload.regions[0].areas.map(function(e, t) {
-                                var i = [];
-                                return i[t] = e.name
-                            })), k.autocomplete({
-                                source: q,
-                                minLength: 0,
-                                select: function(e, t) {
-                                    k.parents(".ui-input").addClass(y.changed)
-                                }
-                            }).click(function() {
-                                $(this).autocomplete("search", "")
-                            }), k.autocomplete("enable")
-                        }), T === !1) return C.inputToggle(k, !0), void(T = N);
-                    T !== N && C.inputToggle(k, !0), T = N
-                }
-            },
-            change: function(e, t) {
-                null === t.item && k.autocomplete("disable")
-            }
-        }).click(function() {
-            $(this).autocomplete("search", "")
         }), v.autocomplete({
             source: S,
             minLength: 0,
