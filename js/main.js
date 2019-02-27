@@ -251,7 +251,7 @@ var SP = SP || {};
                 error: "ui-input_error"
             },
             _ = {
-                phone: "+3 (999) 999-99-99",
+                phone: "+38 (999) 999-99-99",
                 birthDate: "99.99.9999"
             },
             x = "hidden",
